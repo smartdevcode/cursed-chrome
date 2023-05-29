@@ -133,7 +133,7 @@
     "url": "git+https://github.com/alibaba/anyproxy.git"
   },
   "scripts": {
-    "buildweb": "NODE_ENV=production webpack --config web/webpack.config.js --colors",
+    "buildweb": "set NODE_ENV=production && webpack --config web/webpack.config.js --colors",
     "doc:build": "./build_scripts/build-doc-site.sh",
     "doc:serve": "node build_scripts/prebuild-doc.js && gitbook serve ./docs-src ./docs --log debug",
     "lint": "eslint .",
@@ -141,7 +141,7 @@
     "test": "node test.js",
     "testOutWeb": "jasmine test/spec_outweb/test_realweb_spec.js",
     "testserver": "node test/server/startServer.js",
-    "webserver": "NODE_ENV=test webpack --config web/webpack.config.js --colors --watch"
+    "webserver": "set NODE_ENV=test && webpack --config web/webpack.config.js --colors --watch"
   },
   "version": "4.1.2"
 }

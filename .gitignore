@@ -4,3 +4,4 @@ node_modules/*
 *.crt
 *.env
 dev.sh
+anyproxy/node_modules

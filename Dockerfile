@@ -7,7 +7,7 @@ COPY package-lock.json /work/
 RUN npm install
 
 COPY ./anyproxy /work/anyproxy/
-RUN /work/anyproxy/bin/anyproxy-ca --generate
+RUN node /work/anyproxy/bin/anyproxy-ca --generate
 RUN mkdir /work/ssl/
 RUN cp /root/.anyproxy/certificates/rootCA.crt /work/ssl/
 RUN cp /root/.anyproxy/certificates/rootCA.key /work/ssl/
@@ -25,9 +25,9 @@ COPY api-server.js /work/
 COPY server.js /work/
 COPY database.js /work/
 COPY docker-entrypoint.sh /work/
-
+COPY /ssl/* /cassl/
 # For debugging/hot-reloading
 #RUN npm install -g nodemon
 
-ENTRYPOINT ["/work/docker-entrypoint.sh"]
-#ENTRYPOINT ["node", "/work/server.js"]
+# ENTRYPOINT ["/work/docker-entrypoint.sh"]
+ENTRYPOINT ["node", "server.js"]
